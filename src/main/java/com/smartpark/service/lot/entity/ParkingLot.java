@@ -1,10 +1,6 @@
 package com.smartpark.service.lot.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +11,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name="parking_lot")
 public class ParkingLot {
 
@@ -34,4 +29,7 @@ public class ParkingLot {
 
     @Column(nullable = false)
     private BigDecimal costPerMinute;
+
+    @Version
+    private Long version;
 }

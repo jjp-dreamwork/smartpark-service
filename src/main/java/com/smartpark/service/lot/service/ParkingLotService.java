@@ -21,15 +21,15 @@ public class ParkingLotService {
                     "ParkingLot with LotId-" + request.getLotId() + " is already registered.");
         }
 
-        ParkingLot registerParkingLot = new ParkingLot(
-                request.getLotId(),
-                request.getLocation(),
-                request.getCapacity(),
-                0,
-                request.getCostPerMinute()
-        );
+        ParkingLot registerParkingLot = new ParkingLot();
+        registerParkingLot.setLotId(request.getLotId());
+        registerParkingLot.setLocation(request.getLocation());
+        registerParkingLot.setCapacity(request.getCapacity());
+        registerParkingLot.setCostPerMinute(request.getCostPerMinute());
 
         ParkingLot registeredParkingLot = parkingLotRepository.save(registerParkingLot);
+
+        System.out.println(registeredParkingLot.getVersion());
 
         return ParkingLotResponse.builder()
                 .lotId(registeredParkingLot.getLotId())
