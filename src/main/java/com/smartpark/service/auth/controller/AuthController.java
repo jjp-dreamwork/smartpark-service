@@ -1,8 +1,8 @@
-package com.smartpark.service.controller;
+package com.smartpark.service.auth.controller;
 
-import com.smartpark.service.dto.request.LoginRequest;
-import com.smartpark.service.dto.response.LoginResponse;
-import com.smartpark.service.security.AuthenticationService;
+import com.smartpark.service.auth.dto.request.LoginRequest;
+import com.smartpark.service.auth.dto.response.LoginResponse;
+import com.smartpark.service.auth.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public LoginResponse login(@Valid @RequestBody LoginRequest request) {
-        System.out.println(">>> Login Controller reached");
         return authenticationService.login(request);
     }
 

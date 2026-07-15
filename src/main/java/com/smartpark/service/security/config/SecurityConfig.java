@@ -1,6 +1,6 @@
-package com.smartpark.service.configuration;
+package com.smartpark.service.security.config;
 
-import com.smartpark.service.security.JwtAuthenticationFilter;
+import com.smartpark.service.security.filter.JwtAuthenticationFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,6 @@ public class SecurityConfig {
                                 SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/auth/login").permitAll()
-                            .requestMatchers("/error").permitAll() // TODO: temporarily fix the 403 response instead of 400 using @Valid, another fix would be to handle the exception in GlobalExceptionHandler
                             .anyRequest()
                             .authenticated())
                 .addFilterBefore(

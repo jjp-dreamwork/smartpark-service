@@ -1,4 +1,4 @@
-package com.smartpark.service.dto.response;
+package com.smartpark.service.auth.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,9 +1,10 @@
-package com.smartpark.service.security;
+package com.smartpark.service.auth.service;
 
-import com.smartpark.service.configuration.SecurityProperties;
-import com.smartpark.service.dto.request.LoginRequest;
-import com.smartpark.service.dto.response.LoginResponse;
-import com.smartpark.service.exception.InvalidCredentialsException;
+import com.smartpark.service.security.config.SecurityProperties;
+import com.smartpark.service.auth.dto.request.LoginRequest;
+import com.smartpark.service.auth.dto.response.LoginResponse;
+import com.smartpark.service.auth.exception.InvalidCredentialsException;
+import com.smartpark.service.security.service.JwtService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

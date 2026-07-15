@@ -1,6 +1,6 @@
-package com.smartpark.service.security;
+package com.smartpark.service.security.service;
 
-import com.smartpark.service.configuration.JwtProperties;
+import com.smartpark.service.security.config.JwtProperties;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

@@ -1,4 +1,4 @@
-package com.smartpark.service.dto.request;
+package com.smartpark.service.auth.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

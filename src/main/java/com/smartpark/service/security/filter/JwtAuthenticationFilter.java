@@ -1,5 +1,6 @@
-package com.smartpark.service.security;
+package com.smartpark.service.security.filter;
 
+import com.smartpark.service.security.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

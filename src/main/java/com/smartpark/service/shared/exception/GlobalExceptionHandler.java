@@ -1,6 +1,7 @@
-package com.smartpark.service.exception;
+package com.smartpark.service.shared.exception;
 
-import com.smartpark.service.dto.response.ErrorResponse;
+import com.smartpark.service.auth.exception.InvalidCredentialsException;
+import com.smartpark.service.shared.dto.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

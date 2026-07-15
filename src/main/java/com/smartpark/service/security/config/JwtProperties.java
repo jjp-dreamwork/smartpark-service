@@ -1,4 +1,4 @@
-package com.smartpark.service.configuration;
+package com.smartpark.service.security.config;
 
 import lombok.Getter;
 import lombok.Setter;
