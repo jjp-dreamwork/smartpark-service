@@ -1,6 +1,7 @@
 package com.smartpark.service.shared.exception;
 
 import com.smartpark.service.auth.exception.InvalidCredentialsException;
+import com.smartpark.service.lot.exception.ParkingLotAlreadyExistsException;
 import com.smartpark.service.shared.dto.response.ErrorResponse;
 import com.smartpark.service.vehicle.exception.VehicleAlreadyExistsException;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(VehicleAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleVehicleAlreadyExistsException(VehicleAlreadyExistsException ex) {
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.CONFLICT.value())
+                .error(HttpStatus.CONFLICT.getReasonPhrase())
+                .message(ex.getMessage())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(ParkingLotAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleParkingLotAlreadyExistsException(ParkingLotAlreadyExistsException ex) {
 
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())

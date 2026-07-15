@@ -22,12 +22,13 @@ public class VehicleService {
         }
 
         // normally MapStruct is used to reduce boilerplate
-        Vehicle registeredVehicle = vehicleRepository.save(
-                new Vehicle(
-                        request.getLicensePlate(),
-                        request.getType(),
-                        request.getOwnerName())
+        Vehicle registerVehicle = new Vehicle(
+                request.getLicensePlate(),
+                request.getType(),
+                request.getOwnerName()
         );
+
+        Vehicle registeredVehicle = vehicleRepository.save(registerVehicle);
 
         return VehicleResponse.builder()
                 .licensePlate(registeredVehicle.getLicensePlate())
