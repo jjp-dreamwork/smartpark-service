@@ -3,6 +3,7 @@ package com.smartpark.service.security;
 import com.smartpark.service.configuration.SecurityProperties;
 import com.smartpark.service.dto.request.LoginRequest;
 import com.smartpark.service.dto.response.LoginResponse;
+import com.smartpark.service.exception.InvalidCredentialsException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,7 @@ public class AuthenticationService {
 
         if (!securityProperties.getUsername().equals(request.getUsername())
                 || !securityProperties.getPassword().equals(request.getPassword())) {
-
-            // TODO : InvalidCredentialsException - (global exception handler)
-            throw new RuntimeException("Invalid username or password");
+            throw new InvalidCredentialsException("Invalid username or password");
         }
 
         String token = jwtService.generateToken(request.getUsername());
