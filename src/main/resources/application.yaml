@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: smartpark-service
+
+  datasource:
+    url: jdbc:h2:mem:smartpark
+    driver-class-name: org.h2.Driver
+    username: sa #Default H2 db user and pass
+    password: ""
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: 8mR6Vn3KxQ2pZ9sLf4WcY7aHd1Jt5NxEr8Uv6BpQ
+  expiration: 3600000
+
+# Static user creds for API Login
+security:
+  username: admin
+  password: admin
