@@ -34,4 +34,7 @@ public class ParkingSession {
 
     private LocalDateTime exitTime;
     private BigDecimal parkingFee;
+
+    @Version
+    private Long version;
 }

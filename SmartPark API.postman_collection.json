@@ -1,0 +1,279 @@
+{
+  "info": {
+    "_postman_id": "b08b5f66-8f7d-44a8-9f23-7adc4fdcfb09",
+    "name": "SmartPark API",
+    "description": "REST API for Intelligent Parking Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33718089",
+    "_collection_link": "https://go.postman.co/collection/33718089-b08b5f66-8f7d-44a8-9f23-7adc4fdcfb09?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('token', jsonData.token);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Parking Lots",
+      "item": [
+        {
+          "name": "Register Parking Lot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lotId\": \"LOT-100\",\n  \"location\": \"Beach Parking\",\n  \"capacity\": 2,\n  \"costPerMinute\": 0.40\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/parking-lot",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parking-lot"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Occupancy",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/parking-lot/LOT-100/occupancy",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parking-lot",
+                "LOT-100",
+                "occupancy"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Vehicles in Lot",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/parking-lot/LOT-100/vehicles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parking-lot",
+                "LOT-100",
+                "vehicles"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vehicles",
+      "item": [
+        {
+          "name": "Register Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"NEW-1111\",\n  \"type\": \"CAR\",\n  \"ownerName\": \"John Jason\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/vehicle",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "vehicle"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Parking Sessions",
+      "item": [
+        {
+          "name": "Check-In Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"ABC-1234\",\n  \"lotId\": \"LOT-001\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/parking-session/check-in",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parking-session",
+                "check-in"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check-Out Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"ABC-1234\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/parking-session/check-out",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parking-session",
+                "check-out"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

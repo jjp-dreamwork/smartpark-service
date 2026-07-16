@@ -15,16 +15,36 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    defer-datasource-initialization: true
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+  
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
 
 jwt:
   secret: 8mR6Vn3KxQ2pZ9sLf4WcY7aHd1Jt5NxEr8Uv6BpQ
-  expiration: 3600000
+  expiration: 300000
+#  expiration: 10000 # Testing Expiration
 
-# Static user creds for API Login
 security:
   username: admin
   password: admin
+
+logging:
+  level:
+    root: INFO
+    com.smartpark: DEBUG
+
+smartpark:
+  auto-checkout:
+    timeout-minutes: 15
+    fixed-rate-ms: 60000
