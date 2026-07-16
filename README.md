@@ -16,7 +16,7 @@ A REST API service for intelligent parking management system for urban areas.
 ## Prerequisites
 
 - Java 8 or higher (tested with Java 26)
-- Maven 3.6+
+- Maven 3.6+ (tested with Maven 3.9.16)
 
 ## Build
 
