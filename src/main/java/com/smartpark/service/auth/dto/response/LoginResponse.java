@@ -6,5 +6,6 @@ import lombok.Getter;
 @Getter
 @Builder
 public class LoginResponse {
+    // TODO: Add expiresAt
     private String token;
 }
